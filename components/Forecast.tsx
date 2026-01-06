@@ -45,9 +45,9 @@ export default function Forecast({ forecast, unit }: ForecastProps) {
   }
 
   return (
-    <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-200/50 dark:border-gray-700/50 p-6 animate-fade-in">
-      <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
-        <svg className="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <div className="bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm rounded-2xl shadow-xl border border-slate-200/50 dark:border-slate-700/50 p-6 animate-fade-in">
+      <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-6 flex items-center gap-2">
+        <svg className="w-6 h-6 text-blue-500 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
         </svg>
         5-Day Forecast
@@ -63,9 +63,9 @@ export default function Forecast({ forecast, unit }: ForecastProps) {
           return (
             <div
               key={`${item.dt}-${index}`}
-              className="bg-gradient-to-br from-white/80 to-gray-50/80 dark:from-gray-700/80 dark:to-gray-800/80 backdrop-blur-sm rounded-xl p-4 text-center border border-gray-200/50 dark:border-gray-600/50 hover:shadow-lg hover:scale-105 transition-all duration-300"
+              className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm rounded-xl p-4 text-center border border-slate-200/50 dark:border-slate-700/50 hover:shadow-lg hover:scale-105 hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-300"
             >
-              <p className="text-sm font-bold text-gray-800 dark:text-gray-200 mb-3">
+              <p className="text-sm font-bold text-slate-800 dark:text-slate-200 mb-3">
                 {formatDate(item.dt)}
               </p>
               <img
@@ -73,21 +73,21 @@ export default function Forecast({ forecast, unit }: ForecastProps) {
                 alt={condition}
                 className="w-14 h-14 mx-auto mb-3 drop-shadow-md"
               />
-              <p className="text-2xl font-extrabold text-gray-900 dark:text-white mb-2">
+              <p className="text-2xl font-extrabold text-slate-900 dark:text-slate-100 mb-2">
                 {temp}°{unit}
               </p>
-              <p className="text-xs text-gray-600 dark:text-gray-400 mb-3 capitalize font-medium">
+              <p className="text-xs text-slate-600 dark:text-slate-400 mb-3 capitalize font-medium">
                 {item.weather[0]?.description}
               </p>
               <div className="flex justify-center items-center gap-3 text-xs font-semibold mb-3">
                 <span className="text-red-500 dark:text-red-400">↑ {tempMax}°</span>
                 <span className="text-blue-500 dark:text-blue-400">↓ {tempMin}°</span>
               </div>
-              <div className="mt-2 text-xs text-gray-600 dark:text-gray-400">
+              <div className="mt-2 text-xs text-slate-600 dark:text-slate-400">
                 <p>Humidity: {item.main.humidity}%</p>
                 <p>Wind: {item.wind.speed} m/s</p>
                 {item.pop !== undefined && (
-                  <p className="flex items-center gap-1 justify-center mt-1">
+                  <p className="flex items-center gap-1 justify-center mt-1 text-blue-600 dark:text-blue-400">
                     <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
                       <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" />
                     </svg>

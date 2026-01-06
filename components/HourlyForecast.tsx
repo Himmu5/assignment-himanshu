@@ -25,9 +25,9 @@ export default function HourlyForecast({ forecast, unit }: HourlyForecastProps) 
   };
 
   return (
-    <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-200/50 dark:border-gray-700/50 p-6 animate-fade-in">
-      <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
-        <svg className="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <div className="bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm rounded-2xl shadow-xl border border-slate-200/50 dark:border-slate-700/50 p-6 animate-fade-in">
+      <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-6 flex items-center gap-2">
+        <svg className="w-6 h-6 text-blue-500 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
         Hourly Forecast
@@ -56,18 +56,18 @@ export default function HourlyForecast({ forecast, unit }: HourlyForecastProps) 
           return (
             <div
               key={period}
-              className="bg-gradient-to-br from-white/80 to-gray-50/80 dark:from-gray-700/80 dark:to-gray-800/80 backdrop-blur-sm rounded-xl p-4 text-center border border-gray-200/50 dark:border-gray-600/50 hover:shadow-lg hover:scale-105 transition-all duration-300"
+              className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm rounded-xl p-4 text-center border border-slate-200/50 dark:border-slate-700/50 hover:shadow-lg hover:scale-105 hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-300"
             >
-              <p className="text-sm font-bold text-gray-800 dark:text-gray-200 mb-3">{period}</p>
+              <p className="text-sm font-bold text-slate-800 dark:text-slate-200 mb-3">{period}</p>
               <img
                 src={getWeatherIconUrl(icon)}
                 alt={condition}
                 className="w-12 h-12 mx-auto mb-3 drop-shadow-md"
               />
-              <p className="text-xl font-extrabold text-gray-900 dark:text-white mb-2">
+              <p className="text-xl font-extrabold text-slate-900 dark:text-slate-100 mb-2">
                 {convertTemperature(avgTemp, unit)}°{unit}
               </p>
-              <p className="text-xs text-gray-600 dark:text-gray-400 capitalize mb-2 font-medium">
+              <p className="text-xs text-slate-600 dark:text-slate-400 capitalize mb-2 font-medium">
                 {representative.weather[0]?.description}
               </p>
               <div className="flex items-center justify-center gap-1 text-xs text-blue-600 dark:text-blue-400 font-medium">
@@ -95,9 +95,9 @@ export default function HourlyForecast({ forecast, unit }: HourlyForecastProps) 
             return (
               <div
                 key={`${item.dt}-${index}`}
-                className="flex-shrink-0 w-28 bg-gradient-to-br from-white/80 to-gray-50/80 dark:from-gray-700/80 dark:to-gray-800/80 backdrop-blur-sm rounded-xl p-4 text-center border border-gray-200/50 dark:border-gray-600/50 hover:shadow-lg hover:scale-105 transition-all duration-300"
+                className="flex-shrink-0 w-28 bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm rounded-xl p-4 text-center border border-slate-200/50 dark:border-slate-700/50 hover:shadow-lg hover:scale-105 hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-300"
               >
-                <p className="text-xs font-bold text-gray-800 dark:text-gray-200 mb-2">
+                <p className="text-xs font-bold text-slate-800 dark:text-slate-200 mb-2">
                   {index === 0 ? 'Now' : `${time.getHours()}:${time.getMinutes().toString().padStart(2, '0')}`}
                 </p>
                 <img
@@ -105,7 +105,7 @@ export default function HourlyForecast({ forecast, unit }: HourlyForecastProps) 
                   alt={condition}
                   className="w-10 h-10 mx-auto mb-2 drop-shadow-md"
                 />
-                <p className="text-lg font-extrabold text-gray-900 dark:text-white mb-2">
+                <p className="text-lg font-extrabold text-slate-900 dark:text-slate-100 mb-2">
                   {temp}°{unit}
                 </p>
                 <div className="flex items-center justify-center gap-1 text-xs text-blue-600 dark:text-blue-400 font-medium">
