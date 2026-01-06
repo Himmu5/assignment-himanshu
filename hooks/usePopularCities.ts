@@ -3,6 +3,9 @@ import { WeatherTableRow, WeatherError } from '@/types/weather';
 import { fetchMultipleCitiesWeather } from '@/lib/weatherApi';
 import { POPULAR_CITIES } from '@/lib/constants';
 
+// Show only top 5 popular cities
+const TOP_5_CITIES = POPULAR_CITIES.slice(0, 5);
+
 interface UsePopularCitiesOptions {
   apiKey: string;
 }
@@ -26,7 +29,7 @@ export function usePopularCities({ apiKey }: UsePopularCitiesOptions): UsePopula
     setError(null);
 
     try {
-      const results = await fetchMultipleCitiesWeather(POPULAR_CITIES, apiKey);
+      const results = await fetchMultipleCitiesWeather(TOP_5_CITIES, apiKey);
       const rows: WeatherTableRow[] = results
         .filter((result) => result.data !== null)
         .map((result) => ({

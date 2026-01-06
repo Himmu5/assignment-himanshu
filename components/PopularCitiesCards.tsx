@@ -1,11 +1,8 @@
 'use client';
 
-import { useState } from 'react';
 import { WeatherTableRow, TemperatureUnit } from '@/types/weather';
 import { convertTemperature, getWeatherIconUrl } from '@/lib/utils';
-import { ITEMS_PER_PAGE } from '@/lib/constants';
 import Card from './ui/Card';
-import Button from './ui/Button';
 
 interface PopularCitiesCardsProps {
   data: WeatherTableRow[];
@@ -14,23 +11,8 @@ interface PopularCitiesCardsProps {
 }
 
 export default function PopularCitiesCards({ data, unit, onCityClick }: PopularCitiesCardsProps) {
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const totalPages = Math.ceil(data.length / ITEMS_PER_PAGE);
-  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const endIndex = startIndex + ITEMS_PER_PAGE;
-  const currentData = data.slice(startIndex, endIndex);
-
-  const handlePrevious = () => {
-    setCurrentPage((prev) => Math.max(1, prev - 1));
-  };
-
-  const handleNext = () => {
-    setCurrentPage((prev) => Math.min(totalPages, prev - 1));
-  };
-
-  const handlePageClick = (page: number) => {
-    setCurrentPage(page);
-  };
+  // Show only top 5 cities
+  const top5Cities = data.slice(0, 5);
 
   if (data.length === 0) {
     return (
@@ -59,10 +41,10 @@ export default function PopularCitiesCards({ data, unit, onCityClick }: PopularC
   };
 
   return (
-    <div className="space-y-6">
+    <div>
       {/* Cities Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
-        {currentData.map((row, index) => {
+        {top5Cities.map((row, index) => {
           const temp = convertTemperature(row.temperature, unit);
           const icon = getWeatherIcon(row.condition);
 
@@ -124,48 +106,6 @@ export default function PopularCitiesCards({ data, unit, onCityClick }: PopularC
           );
         })}
       </div>
-
-      {/* Pagination */}
-      {totalPages > 1 && (
-        <div className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm rounded-xl p-4 border border-slate-200/50 dark:border-slate-700/50 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <Button
-              variant="secondary"
-              size="sm"
-              onClick={handlePrevious}
-              disabled={currentPage === 1}
-            >
-              Previous
-            </Button>
-            <span className="text-sm text-slate-700 dark:text-slate-300 px-2">
-              Page {currentPage} of {totalPages}
-            </span>
-            <Button
-              variant="secondary"
-              size="sm"
-              onClick={handleNext}
-              disabled={currentPage === totalPages}
-            >
-              Next
-            </Button>
-          </div>
-          <div className="flex gap-1">
-            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-              <button
-                key={page}
-                onClick={() => handlePageClick(page)}
-                className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
-                  currentPage === page
-                    ? 'bg-blue-500 text-white'
-                    : 'bg-white/80 dark:bg-slate-700/80 text-slate-700 dark:text-slate-300'
-                }`}
-              >
-                {page}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
     </div>
   );
 }
