@@ -1,7 +1,7 @@
 'use client';
 
-import { CurrentWeather } from '@/types/weather';
-import { convertTemperature, getWeatherIconUrl, formatTime, getWindDirection, TemperatureUnit } from '@/lib/utils';
+import { CurrentWeather, TemperatureUnit } from '@/types/weather';
+import { convertTemperature, getWeatherIconUrl, formatTime, getWindDirection } from '@/lib/utils';
 import Card from './ui/Card';
 
 interface WeatherCardProps {
