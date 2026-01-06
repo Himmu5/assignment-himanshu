@@ -125,8 +125,4 @@ NEXT_PUBLIC_WEATHER_API_KEY=2e8e972d4cb51c311385e21870d78cf8
 npm run build
 npm start
 ```
-
-## License
-
-This project is created for educational purposes.
-
+ 
