@@ -9,7 +9,7 @@ import { usePopularCities } from '@/hooks/usePopularCities';
 import { useRecentSearches } from '@/hooks/useRecentSearches';
 import SearchBar from '@/components/SearchBar';
 import WeatherCard from '@/components/WeatherCard';
-import WeatherTable from '@/components/WeatherTable';
+import PopularCitiesCards from '@/components/PopularCitiesCards';
 import Forecast from '@/components/Forecast';
 import HourlyForecast from '@/components/HourlyForecast';
 import DarkModeToggle from '@/components/DarkModeToggle';
@@ -208,7 +208,7 @@ export default function Home() {
                 </svg>
               }
               title="Search for Weather"
-              description="Enter a city name above or click on a city from the popular cities table below to see weather information"
+              description="Enter a city name above or click on a city from the popular cities below to see weather information"
             />
           )}
 
@@ -262,7 +262,7 @@ export default function Home() {
             {tableLoading ? (
               <TableSkeleton />
             ) : tableData.length > 0 ? (
-              <WeatherTable data={tableData} unit={unit} onCityClick={handleCityClick} />
+              <PopularCitiesCards data={tableData} unit={unit} onCityClick={handleCityClick} />
             ) : (
               <EmptyState
                 title="No Weather Data Available"
