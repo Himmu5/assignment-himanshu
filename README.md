@@ -39,7 +39,6 @@ A modern, responsive weather forecasting application built with Next.js, TypeScr
 ### Prerequisites
 
 - Node.js 18+ installed
-- OpenWeatherMap API key (free at [openweathermap.org](https://openweathermap.org/api))
 
 ### Installation
 
@@ -54,9 +53,9 @@ cd assignment-himanshu
 npm install
 ```
 
-3. Create a `.env.local` file in the root directory:
+3. Create a `.env` file in the root directory:
 ```bash
-NEXT_PUBLIC_WEATHER_API_KEY=your_api_key_here
+NEXT_PUBLIC_WEATHER_API_KEY=2e8e972d4cb51c311385e21870d78cf8
 ```
 
 4. Run the development server:
@@ -117,7 +116,7 @@ assignment-himanshu/
 Create a `.env.local` file with:
 
 ```
-NEXT_PUBLIC_WEATHER_API_KEY=your_openweathermap_api_key
+NEXT_PUBLIC_WEATHER_API_KEY=2e8e972d4cb51c311385e21870d78cf8
 ```
 
 ## Build for Production
