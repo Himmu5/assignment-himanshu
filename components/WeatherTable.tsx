@@ -65,11 +65,10 @@ export default function WeatherTable({ data, unit, onCityClick }: WeatherTablePr
             {currentData.map((row, index) => (
               <tr
                 key={`${row.city}-${index}`}
-                className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
               >
                 <td
                   className={`px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white ${
-                    onCityClick ? 'cursor-pointer hover:text-blue-600 dark:hover:text-blue-400' : ''
+                    onCityClick ? 'cursor-pointer' : ''
                   }`}
                   onClick={() => onCityClick?.(row.city)}
                   role={onCityClick ? 'button' : undefined}
@@ -108,7 +107,7 @@ export default function WeatherTable({ data, unit, onCityClick }: WeatherTablePr
             <button
               onClick={handlePrevious}
               disabled={currentPage === 1}
-              className="px-4 py-2 bg-white dark:bg-gray-600 text-gray-700 dark:text-white rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-100 dark:hover:bg-gray-500 transition-colors"
+              className="px-4 py-2 bg-white dark:bg-gray-600 text-gray-700 dark:text-white rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
             >
               Previous
             </button>
@@ -118,7 +117,7 @@ export default function WeatherTable({ data, unit, onCityClick }: WeatherTablePr
             <button
               onClick={handleNext}
               disabled={currentPage === totalPages}
-              className="px-4 py-2 bg-white dark:bg-gray-600 text-gray-700 dark:text-white rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-100 dark:hover:bg-gray-500 transition-colors"
+              className="px-4 py-2 bg-white dark:bg-gray-600 text-gray-700 dark:text-white rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
             >
               Next
             </button>
@@ -131,8 +130,8 @@ export default function WeatherTable({ data, unit, onCityClick }: WeatherTablePr
                 className={`px-3 py-1 rounded ${
                   currentPage === page
                     ? 'bg-blue-500 text-white'
-                    : 'bg-white dark:bg-gray-600 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-500'
-                } transition-colors`}
+                    : 'bg-white dark:bg-gray-600 text-gray-700 dark:text-white'
+                }`}
               >
                 {page}
               </button>

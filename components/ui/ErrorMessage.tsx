@@ -35,7 +35,7 @@ export default function ErrorMessage({ message, onDismiss, action }: ErrorMessag
         {onDismiss && (
           <button
             onClick={onDismiss}
-            className="ml-2 text-red-700 dark:text-red-300 hover:text-red-900 dark:hover:text-red-100 transition-colors"
+            className="ml-2 text-red-700 dark:text-red-300"
             aria-label="Dismiss error"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

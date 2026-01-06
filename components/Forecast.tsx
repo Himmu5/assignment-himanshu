@@ -63,7 +63,7 @@ export default function Forecast({ forecast, unit }: ForecastProps) {
           return (
             <div
               key={`${item.dt}-${index}`}
-              className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm rounded-xl p-4 text-center border border-slate-200/50 dark:border-slate-700/50 hover:shadow-lg hover:scale-105 hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-300"
+              className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm rounded-xl p-4 text-center border border-slate-200/50 dark:border-slate-700/50"
             >
               <p className="text-sm font-bold text-slate-800 dark:text-slate-200 mb-3">
                 {formatDate(item.dt)}

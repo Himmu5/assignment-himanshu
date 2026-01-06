@@ -34,7 +34,7 @@ export default function WeatherCard({ weather, unit }: WeatherCardProps) {
   };
 
   return (
-    <Card hover className="relative overflow-hidden">
+    <Card className="relative overflow-hidden">
       {/* Background gradient overlay */}
       <div className={`absolute inset-0 bg-gradient-to-br ${getConditionGradient()} opacity-5 dark:opacity-10 -z-0`}></div>
       
@@ -76,26 +76,26 @@ export default function WeatherCard({ weather, unit }: WeatherCardProps) {
         </div>
 
         <div className="grid grid-cols-2 gap-3 mb-4">
-          <div className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm rounded-xl p-4 border border-slate-200/50 dark:border-slate-700/50 hover:shadow-md hover:border-blue-300 dark:hover:border-blue-600 transition-all">
+          <div className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm rounded-xl p-4 border border-slate-200/50 dark:border-slate-700/50">
             <p className="text-xs font-medium text-slate-600 dark:text-slate-400 uppercase tracking-wide mb-1">Feels Like</p>
             <p className="text-2xl font-bold text-slate-900 dark:text-slate-100">
               {feelsLike}°{unit}
             </p>
           </div>
-          <div className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm rounded-xl p-4 border border-slate-200/50 dark:border-slate-700/50 hover:shadow-md hover:border-blue-300 dark:hover:border-blue-600 transition-all">
+          <div className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm rounded-xl p-4 border border-slate-200/50 dark:border-slate-700/50">
             <p className="text-xs font-medium text-slate-600 dark:text-slate-400 uppercase tracking-wide mb-1">Humidity</p>
             <p className="text-2xl font-bold text-slate-900 dark:text-slate-100">
               {weather.main.humidity}%
             </p>
           </div>
-          <div className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm rounded-xl p-4 border border-slate-200/50 dark:border-slate-700/50 hover:shadow-md hover:border-blue-300 dark:hover:border-blue-600 transition-all">
+          <div className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm rounded-xl p-4 border border-slate-200/50 dark:border-slate-700/50">
             <p className="text-xs font-medium text-slate-600 dark:text-slate-400 uppercase tracking-wide mb-1">Wind Speed</p>
             <p className="text-2xl font-bold text-slate-900 dark:text-slate-100">
               {weather.wind.speed} m/s
             </p>
             <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">{getWindDirection(weather.wind.deg)}</p>
           </div>
-          <div className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm rounded-xl p-4 border border-slate-200/50 dark:border-slate-700/50 hover:shadow-md hover:border-blue-300 dark:hover:border-blue-600 transition-all">
+          <div className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm rounded-xl p-4 border border-slate-200/50 dark:border-slate-700/50">
             <p className="text-xs font-medium text-slate-600 dark:text-slate-400 uppercase tracking-wide mb-1">Pressure</p>
             <p className="text-2xl font-bold text-slate-900 dark:text-slate-100">
               {weather.main.pressure} hPa
@@ -104,13 +104,13 @@ export default function WeatherCard({ weather, unit }: WeatherCardProps) {
         </div>
 
         <div className="grid grid-cols-2 gap-3 mb-4">
-          <div className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm rounded-xl p-4 border border-slate-200/50 dark:border-slate-700/50 hover:shadow-md hover:border-blue-300 dark:hover:border-blue-600 transition-all">
+          <div className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm rounded-xl p-4 border border-slate-200/50 dark:border-slate-700/50">
             <p className="text-xs font-medium text-slate-600 dark:text-slate-400 uppercase tracking-wide mb-1">Visibility</p>
             <p className="text-2xl font-bold text-slate-900 dark:text-slate-100">
               {weather.visibility ? (weather.visibility / 1000).toFixed(1) : 'N/A'} km
             </p>
           </div>
-          <div className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm rounded-xl p-4 border border-slate-200/50 dark:border-slate-700/50 hover:shadow-md hover:border-blue-300 dark:hover:border-blue-600 transition-all">
+          <div className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm rounded-xl p-4 border border-slate-200/50 dark:border-slate-700/50">
             <p className="text-xs font-medium text-slate-600 dark:text-slate-400 uppercase tracking-wide mb-1">Cloudiness</p>
             <p className="text-2xl font-bold text-slate-900 dark:text-slate-100">
               {weather.clouds.all}%

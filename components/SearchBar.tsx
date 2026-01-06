@@ -87,19 +87,19 @@ export default function SearchBar({
               onKeyDown={handleKeyDown}
               onFocus={handleFocus}
               placeholder={placeholder}
-              className="w-full px-4 py-3 pr-10 rounded-xl border-2 border-slate-300 dark:border-slate-600 bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm text-slate-900 dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-blue-500 dark:focus:border-blue-400 transition-all shadow-md hover:shadow-lg"
+              className="w-full px-4 py-3 pr-10 rounded-xl border-2 border-slate-300 dark:border-slate-600 bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm text-slate-900 dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-blue-500 dark:focus:border-blue-400 transition-all shadow-md"
               disabled={isLoading}
               aria-label="Search for a city"
               aria-expanded={showRecent}
               aria-haspopup="listbox"
             />
             {city && (
-              <button
-                type="button"
-                onClick={handleClear}
-                className="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
-                aria-label="Clear search"
-              >
+            <button
+              type="button"
+              onClick={handleClear}
+              className="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-gray-400 dark:text-gray-500"
+              aria-label="Clear search"
+            >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
@@ -128,7 +128,7 @@ export default function SearchBar({
                 onClick={() => {
                   recentSearches.forEach((s) => onRecentSearchRemove?.(s));
                 }}
-                className="text-xs text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                className="text-xs text-gray-500 dark:text-gray-400"
               >
                 Clear all
               </button>
@@ -139,7 +139,7 @@ export default function SearchBar({
               <li
                 key={`${searchCity}-${index}`}
                 role="option"
-                className="px-4 py-2 hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer flex items-center justify-between group"
+                className="px-4 py-2 cursor-pointer flex items-center justify-between group"
                 onClick={() => handleRecentClick(searchCity)}
               >
                 <span className="text-gray-900 dark:text-white flex items-center gap-2">
@@ -154,7 +154,7 @@ export default function SearchBar({
                       e.stopPropagation();
                       onRecentSearchRemove(searchCity);
                     }}
-                    className="opacity-0 group-hover:opacity-100 p-1 text-gray-400 hover:text-red-500 transition-opacity"
+                    className="opacity-0 group-hover:opacity-100 p-1 text-gray-400 dark:text-gray-500"
                     aria-label={`Remove ${searchCity} from recent searches`}
                   >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
