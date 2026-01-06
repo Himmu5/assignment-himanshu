@@ -2,6 +2,20 @@
 
 A modern, responsive weather forecasting application built with Next.js, TypeScript, and Tailwind CSS.
 
+## Screenshots
+
+### Light Mode
+![Home Page - Light Mode](screenshots/home-light.png)
+
+### Dark Mode
+![Home Page - Dark Mode](screenshots/home-dark.png)
+
+### Weather Details - Light Mode
+![Weather Details - Light Mode](screenshots/weather-details-light.png)
+
+### Weather Details - Dark Mode
+![Weather Details - Dark Mode](screenshots/weather-details-dark.png)
+
 ## Features
 
 - 🌤️ **Real-time Weather Data** - Fetch current weather from OpenWeatherMap API
