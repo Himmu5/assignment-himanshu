@@ -91,16 +91,37 @@ export default function Home() {
     setUnit((prev) => (prev === 'C' ? 'F' : 'C'));
   };
 
+  // Get weather condition for dynamic background
+  const getWeatherGradient = () => {
+    if (!currentWeather) return 'bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900';
+    const condition = currentWeather.weather[0]?.main?.toLowerCase() || '';
+    if (condition.includes('clear') || condition.includes('sun')) {
+      return 'bg-gradient-to-br from-yellow-50 via-orange-50 to-pink-50 dark:from-gray-900 dark:via-purple-900/20 dark:to-gray-900';
+    }
+    if (condition.includes('cloud')) {
+      return 'bg-gradient-to-br from-blue-50 via-cyan-50 to-indigo-50 dark:from-gray-900 dark:via-blue-900/20 dark:to-gray-900';
+    }
+    if (condition.includes('rain') || condition.includes('drizzle')) {
+      return 'bg-gradient-to-br from-blue-50 via-teal-50 to-cyan-50 dark:from-gray-900 dark:via-cyan-900/20 dark:to-gray-900';
+    }
+    return 'bg-gradient-to-br from-gray-50 via-slate-50 to-zinc-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900';
+  };
+
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 transition-colors">
-      <div className="container mx-auto px-4 py-8">
+    <div className={`min-h-screen transition-all duration-500 ${getWeatherGradient()}`}>
+      <div className="container mx-auto px-4 py-6 md:py-8 max-w-7xl">
         {/* Header */}
         <header className="mb-8">
-          <div className="flex items-center justify-between mb-6">
-            <h1 className="text-4xl font-bold text-gray-900 dark:text-white">
-              Weather Forecast
-            </h1>
-            <div className="flex items-center gap-4">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-4">
+            <div>
+              <h1 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
+                Weather Forecast
+              </h1>
+              <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                Get accurate weather information for any city
+              </p>
+            </div>
+            <div className="flex items-center gap-3">
               <UnitToggle unit={unit} onToggle={toggleUnit} />
               <DarkModeToggle isDark={isDark} onToggle={toggleDarkMode} />
             </div>
@@ -154,7 +175,7 @@ export default function Home() {
         )}
 
         {/* Main Content */}
-        <div className="space-y-8">
+        <div className="space-y-6 md:space-y-8">
           {/* Current Weather Card */}
           {loading ? (
             <WeatherCardSkeleton />
@@ -205,8 +226,11 @@ export default function Home() {
 
           {/* Weather Table */}
           <div>
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 gap-3">
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                <svg className="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
                 Popular Cities Weather
               </h2>
               {!tableLoading && (

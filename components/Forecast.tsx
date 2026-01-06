@@ -45,11 +45,14 @@ export default function Forecast({ forecast, unit }: ForecastProps) {
   }
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 animate-fade-in">
-      <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+    <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-200/50 dark:border-gray-700/50 p-6 animate-fade-in">
+      <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
+        <svg className="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
         5-Day Forecast
       </h3>
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-3">
         {dailyForecast.map((item, index) => {
           const temp = convertTemperature(item.main.temp, unit);
           const tempMax = convertTemperature(item.main.temp_max, unit);
@@ -60,25 +63,25 @@ export default function Forecast({ forecast, unit }: ForecastProps) {
           return (
             <div
               key={`${item.dt}-${index}`}
-              className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 text-center hover:shadow-md transition-shadow"
+              className="bg-gradient-to-br from-white/80 to-gray-50/80 dark:from-gray-700/80 dark:to-gray-800/80 backdrop-blur-sm rounded-xl p-4 text-center border border-gray-200/50 dark:border-gray-600/50 hover:shadow-lg hover:scale-105 transition-all duration-300"
             >
-              <p className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+              <p className="text-sm font-bold text-gray-800 dark:text-gray-200 mb-3">
                 {formatDate(item.dt)}
               </p>
               <img
                 src={getWeatherIconUrl(icon)}
                 alt={condition}
-                className="w-12 h-12 mx-auto mb-2"
+                className="w-14 h-14 mx-auto mb-3 drop-shadow-md"
               />
-              <p className="text-lg font-bold text-gray-900 dark:text-white mb-1">
+              <p className="text-2xl font-extrabold text-gray-900 dark:text-white mb-2">
                 {temp}°{unit}
               </p>
-              <p className="text-xs text-gray-600 dark:text-gray-400 mb-2 capitalize">
+              <p className="text-xs text-gray-600 dark:text-gray-400 mb-3 capitalize font-medium">
                 {item.weather[0]?.description}
               </p>
-              <div className="flex justify-between text-xs text-gray-600 dark:text-gray-400">
-                <span>H: {tempMax}°</span>
-                <span>L: {tempMin}°</span>
+              <div className="flex justify-center items-center gap-3 text-xs font-semibold mb-3">
+                <span className="text-red-500 dark:text-red-400">↑ {tempMax}°</span>
+                <span className="text-blue-500 dark:text-blue-400">↓ {tempMin}°</span>
               </div>
               <div className="mt-2 text-xs text-gray-600 dark:text-gray-400">
                 <p>Humidity: {item.main.humidity}%</p>
